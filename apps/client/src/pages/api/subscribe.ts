@@ -14,7 +14,6 @@ export default async function subscribeHandler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
   ) {
-    console.log("API Request handler");
 
       await dbConnection();
       const username = req.body.username;
