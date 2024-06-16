@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
+import { useState } from 'react';
 
-function SignupWithOTP() {
-
+function SignupWithOTP(props : {
+    onClick: (username: string) => void
+  }) {
+    const [username, setUsername] = useState("");
     const inputCustomTheme = createTheme({
         palette:{
             primary:{
@@ -17,6 +20,9 @@ function SignupWithOTP() {
     return (
         <ThemeProvider theme={inputCustomTheme}>
             <TextField  
+                onChange={(e)=>{
+                    setUsername(e.target.value);
+                }}
                 sx={{
                     display:"flex",
                     width:'100%',
@@ -33,6 +39,9 @@ function SignupWithOTP() {
                                             fontWeight: 'bolder',
                                             background:'#f4a74b',
                                             border:'none'
+                                        }}
+                                        onClick = {async() => {
+                                            props.onClick(username)
                                         }}
                             >Subscribe</Button>
                         }}

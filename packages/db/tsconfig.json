@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/typescript-config/react-library.json",
+  "compilerOptions": {
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,      
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
