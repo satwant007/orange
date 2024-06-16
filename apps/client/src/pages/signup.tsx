@@ -1,32 +1,16 @@
-import {Paper } from '@mui/material'
-import {OrangePoemComplete} from 'ui'
-import {SignupWithOTP} from 'ui'
-
+import {SubscribePage} from 'ui';
+import axios from 'axios';
 export default function signup() {
   return (
       <>
-        <div>
-          <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',}}  >
-            <Paper  sx={{ background:'transparent', 
-                          width:'45%',
-                          boxShadow: 'none',
-                        }}>
-                <OrangePoemComplete/>
-            </Paper>
-            <div  style={{
-                        display:'flex',
-                        alignItems:'center',
-                        width:'55%',
-                        background:'transparent', 
-                        justifyContent:'space-between',
-                        boxShadow: 'none'
-                        }}>
-                        <SignupWithOTP/>
-            </div>
-          </div>
-        </div>
-    </>
+        <SubscribePage onClick={async (username)=>{
+            console.log("from subscibe page tage in Client "+username);
+            const response = await axios.post("/api/subscribe",{username});
+            if(response.status == 200){
+              localStorage.setItem('token', response.data.token);
+              console.log(localStorage.getItem('token'));
+            }
+        }} />
+      </>
     );
   }
